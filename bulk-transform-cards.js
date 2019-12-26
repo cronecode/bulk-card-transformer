@@ -1,24 +1,24 @@
-const yargs = require('yargs');
+const yargs = require('yargs')
 const fs = require('fs')
 
 const argv = yargs
-    .command('card-transform', 'Massages bulk data from Scryfall', {
-        read: {
-            description: 'the file to read from',
-            alias: 'r',
-            type: 'string',
-        },
-        write: {
-          description: 'the file to write to',
-          alias: 'w',
-          type: 'string'
-        }
-    })
-    .help()
-    .alias('help', 'h')
-    .argv;
+  .command('transform', 'Massages bulk data from Scryfall', {
+      read: {
+          description: 'the file to read from',
+          alias: 'r',
+          type: 'string',
+      },
+      write: {
+        description: 'the file to write to',
+        alias: 'w',
+        type: 'string'
+      }
+  })
+  .help()
+  .alias('help', 'h')
+  .argv
 
-if (argv._.includes('card-transform')) {
+if (argv._.includes('transform')) {
   const readPath = argv.read,
         writePath = argv.write,
         cards = JSON.parse(fs.readFileSync(readPath))
